@@ -7,48 +7,36 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="./style.css">
 
     <title>Car Trivia Quiz</title>
   </head>
-  <body class="container bg-info">
+
+  <h1 class="time close pt-3"></h1>
+
+  <body class="col-md-6 bg-info">
     <h2 class="pt-3 pb-3">Choose the right questions as fast as possible!</h2>
 	<div class="card" style="width: 35rem;">
-  <img src="..." class="card-img-top" alt="...">
   <div class="card-body">
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <p class="card-text font-weight-bold" id="question"></p>
   </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">Cras justo odio</li>
-    <li class="list-group-item">Dapibus ac facilisis in</li>
-    <li class="list-group-item">Vestibulum at eros</li>
+  <ul>
+    <button type="button" class="btn btn-primary" id="A"></button>
+    <div class="pt-2"></div>
+    <button type="button" class="btn btn-primary" id="B"></button>
+    <div class="pt-2"></div>
+    <button type="button" class="btn btn-primary" id="C"></button>
+    <div class="pt-2"></div>
+    <button type="button" class="btn btn-primary" id="D"></button>
   </ul>
-  <div class="card-body">
-    <a href="#" class="card-link">Card link</a>
-    <a href="#" class="card-link">Another link</a>
-  </div>
 </div>
 
-<img id="puppy" src="https://tcpetsitting.com/wp-content/uploads/2019/02/town_country_pet_sitting_square_puppy-163a-400x400.jpg"></img>
-
-<script type="text/javascript">
-var fruits = ["Banana", "Orange", "Apple", "Kiwi"];
-console.log(fruits[0]);
-fruits.sort();
-console.log(fruits);
-console.log(fruits[0]);
-
-var r = Math.random();
-var e = Math.max(10, 20);
-alert(r);
+<div id="result"></div>
 
 
-document.getElementById("puppy").addEventListener("mouseout", myFunction);
 
-function myFunction() {
-	document.getElementById("puppy").src = "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F12%2F2015%2F04%2Fhow-take-care-cat-400x400.jpg";
-}
 
-</script>
+<script src="./script.js"></script>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
