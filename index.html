@@ -11,25 +11,18 @@
 
     <title>Car Trivia Quiz</title>
   </head>
-  <header>
-  <a class="text-muted text-decoration-none float-left" href="./ending.html">View Highscores</a>
-  <h1 class="time close pt-3"></h1>
-  </header>
-  <body class="container col-md-6 bg-info pt-5">
+  <body class="container">
+  <a class="text-muted text-decoration-none float-left" href="./ending.html">View Highscores</a><br>
 
-	<div class="card" style="width: 35rem;">
-  <div class="card-body" id="quiz-body">
-    <h4 class="card-text font-weight-bold" id="question"></h4>
-  </div>
-  <ul>
-    <button type="button" class="btn  pb-2 bg-success textA" id="A"></button>
-    <div class="pt-2"></div>
-    <button type="button" class="btn  pb-2 bg-success textB" id="B"></button>
-    <div class="pt-2"></div>
-    <button type="button" class="btn  pb-2 bg-success textC" id="C"></button>
-    <div class="pt-2"></div>
-    <button type="button" class="btn  pb-2 bg-success textD" id="D"></button>
-  </ul>
+  <button onclick="startQuiz()">Start Quiz!</button>
+  <h4>Time: <span class="time">60</span></h4><br>
+  <h4>Score: <span id="score">0</span></h4><br>
+  <div id="question"></div>
+  <button class="answer">A</button> <span class="text"></span><br>
+  <button class="answer">B</button> <span class="text"></span><br>
+  <button class="answer">C</button> <span class="text"></span><br>
+  <button class="answer">D</button> <span class="text"></span><br>
+  <div id="answer-result"></div>
 </div>
 
 <div id="answer-result"></div>
