@@ -7,8 +7,14 @@ var anResult = document.getElementById("answer-result");
 var score = document.getElementById("score");
 var music = new Audio("./assets/ragtime.mp3");
 var beep = new Audio("./assets/carlock.mp3");
+var incorrect = new Audio("./assets/wrong.mp3");
 
 var points = 0;
+
+function saveData() {
+    localStorage.setItem("points", points);
+    localStorage.setItem("secondsLeft", secondsLeft);
+}
 
 var secondsLeft = 60;
 
@@ -19,6 +25,7 @@ function setTime() {
 
     if(secondsLeft === 0) {
       clearInterval(timerInterval);
+      saveData(); 
       changePage();
     }
   }, 1000);
@@ -32,10 +39,11 @@ function displayResult(isCorrect) {
     if (isCorrect) {
         points = points + 10;
         anResult.textContent = "Right!"
+        beep.play();
     } else {
         anResult.textContent = "Wrong!"
+        incorrect.play();
     }
-    score.textContent = points
     enableButtons(false); // Prevent that user keeps clicking buttons
 }
 
@@ -100,13 +108,12 @@ function listenFunction() {
 
 document.addEventListener("click", function (e) { // One click handler for all four buttons
     let buttonNum = answerButtons.indexOf(e.target);
-    beep.play();
     if (buttonNum < 0) return;
     displayResult(buttonNum === questions[currentQuestion].correct);
     setTimeout(function () { // allow some time for the user to see the result
         currentQuestion++;
         if (currentQuestion >= questions.length) { 
-        // call function to store points in local storage, so we can display points on ending.html   
+        saveData(); 
         changePage();
         }
         displayQuestion();

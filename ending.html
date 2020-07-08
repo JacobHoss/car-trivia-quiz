@@ -7,19 +7,26 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link rel="stylesheet" href="./style.css">
+    <style>
+	li {
+		font-weight: bold;
+	}
+    </style>
         <title>High Scores</title>
   </head>
       <body class="bg-secondary">
         <div class="container bg-info">
-            <h3 class="pt-3">Congratulations!</h3>
-            <h4>Score: <span id="score">0</span></h4>
+            <h3 class="pt-3">Congratulations!</h3><br>
+	    <h4>Your Stats:</h4>
+            <li>Questions Right: <span id="firstLine"></span></li>
+	    <li>Points Accrued: <span id="secondLine"></span></li>
+	    <li>Seconds Left: <span id="thirdLine"></span></li><br>
 
-            <h5 id="points"></h5>
+	    <h4>Final Score: <span id="score"></span></h4>
 
             <h6>Click on Leonardo Dicaprio to play Celebration Music!</h6>
 
-            <img src="./assets/200.gif" class="rounded pb-2 img-fluid" onclick="ending.play()">
+            <img src="./assets/200.gif" alt="Leonardo Dicaprio raising glass" class="rounded pb-2 img-fluid" onclick="ending.play()">
 
             <br>
             
@@ -31,5 +38,19 @@
 
       <script type="text/javascript">
       var ending = new Audio("./assets/sing.mp3");
+
+	var points = localStorage.getItem("points");
+	var secondsLeft = localStorage.getItem("secondsLeft");
+	var questionsRight = parseInt(points) / 10;
+	var finalScore = parseInt(points) + parseInt(secondsLeft);
+	var score = document.getElementById("score");
+	var firstLine = document.getElementById("firstLine");
+	var secondLine = document.getElementById("secondLine"); 
+	var thirdLine = document.getElementById("thirdLine");
+	score.textContent = finalScore;
+	firstLine.textContent = questionsRight;
+	secondLine.textContent = points;
+	thirdLine.textContent = secondsLeft;
+      	
       </script>
   </html>
