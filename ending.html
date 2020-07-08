@@ -17,14 +17,19 @@
 
             <h5 id="points"></h5>
 
-            <img src="./assets/200.gif" class="rounded pb-2 img-fluid">
+            <h6>Click on Leonardo Dicaprio to play Celebration Music!</h6>
+
+            <img src="./assets/200.gif" class="rounded pb-2 img-fluid" onclick="ending.play()">
 
             <br>
             
             <a href="./index.html" class="btn pb-2 bg-success">Go back</a>
-          
+
             <hr>
         </div>
       </body>
-      <script src="./script.js"></script>
+
+      <script type="text/javascript">
+      var ending = new Audio("./assets/sing.mp3");
+      </script>
   </html>

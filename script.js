@@ -5,6 +5,8 @@ var answerButtons = Array.from(document.querySelectorAll(".answer"));
 var answerTexts = document.querySelectorAll(".text");
 var anResult = document.getElementById("answer-result");
 var score = document.getElementById("score");
+var music = new Audio("./assets/ragtime.mp3");
+var beep = new Audio("./assets/carlock.mp3");
 
 var points = 0;
 
@@ -47,6 +49,7 @@ function startQuiz() {
     displayQuestion();
     setTime();
     listenFunction();
+    music.play();
 }
 
 var questions = [{
@@ -97,6 +100,7 @@ function listenFunction() {
 
 document.addEventListener("click", function (e) { // One click handler for all four buttons
     let buttonNum = answerButtons.indexOf(e.target);
+    beep.play();
     if (buttonNum < 0) return;
     displayResult(buttonNum === questions[currentQuestion].correct);
     setTimeout(function () { // allow some time for the user to see the result
