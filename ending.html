@@ -1,56 +1,68 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <style>
-	li {
-		font-weight: bold;
-	}
-    </style>
-        <title>High Scores</title>
-  </head>
-      <body class="bg-secondary">
-        <div class="container bg-info">
-            <h3 class="pt-3">Congratulations!</h3><br>
-	    <h4>Your Stats:</h4>
-            <li>Questions Right: <span id="firstLine"></span></li>
-	    <li>Points Accrued: <span id="secondLine"></span></li>
-	    <li>Seconds Left: <span id="thirdLine"></span></li><br>
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	    <h4>Final Score: <span id="score"></span></h4>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <style>
+    li {
+      font-weight: bold;
+    }
+  </style>
+  <title>High Scores</title>
+</head>
 
-            <h6>Click on Leonardo Dicaprio to play Celebration Music!</h6>
+<body class="bg-secondary">
+  <div class="container bg-info">
+    <h3 class="pt-3">Congratulations!</h3><br>
+    <h4>Your Stats:</h4>
+      <li>Questions Right: <span id="firstLine"></span></li>
+      <li>Points Accrued: <span id="secondLine"></span></li>
+      <li>Seconds Left: <span id="thirdLine"></span></li><br>
+    <h4>Final Score: <span id="score"></span></h4>
+    <h6>Click on Leonardo Dicaprio to play Celebration Music!</h6>
+    <img src="./assets/200.gif" alt="Leonardo Dicaprio raising glass" class="rounded pb-2 img-fluid"
+      onclick="ending.play()">
+    <br>
+    <h6>Enter your Initials and Save your Score!</h6>
+    <form onsubmit="return false;">
+      Initials:
+      <input type="text" size="12" maxlength="3" id="score-initials" />
+      <input type="submit" onclick="saveScore(); " />
+    </form><br>
+    <ol id="score-list"></ol>
+    <a href="./index.html" class="btn pb-2 bg-success">Go back</a>
+    <hr>
+  </div>
+</body>
 
-            <img src="./assets/200.gif" alt="Leonardo Dicaprio raising glass" class="rounded pb-2 img-fluid" onclick="ending.play()">
+<script type="text/javascript">
+  var ending = new Audio("./assets/sing.mp3");
+  var points = localStorage.getItem("points");
+  var secondsLeft = localStorage.getItem("secondsLeft");
+  var questionsRight = parseInt(points) / 10;
+  var finalScore = parseInt(points) + parseInt(secondsLeft);
+  var score = document.getElementById("score");
+  var firstLine = document.getElementById("firstLine");
+  var secondLine = document.getElementById("secondLine");
+  var thirdLine = document.getElementById("thirdLine");
+  score.textContent = finalScore;
+  firstLine.textContent = questionsRight;
+  secondLine.textContent = points;
+  thirdLine.textContent = secondsLeft;
 
-            <br>
-            
-            <a href="./index.html" class="btn pb-2 bg-success">Go back</a>
+  function saveScore() {
+    var initials = document.getElementById('score-initials').value;
+    var node = document.createElement("li");
+    var textnode = document.createTextNode(initials + ": " + finalScore);
+    node.appendChild(textnode);
+    document.getElementById("score-list").appendChild(node);
+  }
+</script>
 
-            <hr>
-        </div>
-      </body>
-
-      <script type="text/javascript">
-      var ending = new Audio("./assets/sing.mp3");
-
-	var points = localStorage.getItem("points");
-	var secondsLeft = localStorage.getItem("secondsLeft");
-	var questionsRight = parseInt(points) / 10;
-	var finalScore = parseInt(points) + parseInt(secondsLeft);
-	var score = document.getElementById("score");
-	var firstLine = document.getElementById("firstLine");
-	var secondLine = document.getElementById("secondLine"); 
-	var thirdLine = document.getElementById("thirdLine");
-	score.textContent = finalScore;
-	firstLine.textContent = questionsRight;
-	secondLine.textContent = points;
-	thirdLine.textContent = secondsLeft;
-      	
-      </script>
-  </html>
+</html>

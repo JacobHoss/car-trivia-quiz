@@ -16,7 +16,7 @@ function saveData() {
     localStorage.setItem("secondsLeft", secondsLeft);
 }
 
-var secondsLeft = 60;
+var secondsLeft = 100;
 
 function setTime() {
   var timerInterval = setInterval(function() {
@@ -41,6 +41,7 @@ function displayResult(isCorrect) {
         anResult.textContent = "Right!"
         beep.play();
     } else {
+        secondsLeft = secondsLeft - 10;
         anResult.textContent = "Wrong!"
         incorrect.play();
     }
